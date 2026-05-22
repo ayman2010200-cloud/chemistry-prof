@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <!-- أهم وسم لضبط أبعاد الصفحة تلقائياً حسب حجم شاشة الجهاز -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تصميم متجاوب للهواتف والأجهزة اللوحية</title>
+    
+    <style>
+        /* إعدادات عامة */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        /* حاوية عناصر الـ SVG */
+        .svg-container {
+            display: flex;
+            flex-direction: row; /* عرض العناصر بجانب بعضها افتراضياً */
+            flex-wrap: wrap;     /* إنزال العناصر للأسفل إذا ضاقت الشاشة */
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* تنسيق الـ SVG الفردي ليتحجّم تلقائياً */
+        .svg-card {
+            width: 100%;        /* يأخذ كامل العرض على الشاشات الصغيرة جداً */
+            max-width: 150px;   /* أقصى عرض يصل إليه العنصر */
+            height: auto;       /* الحفاظ على التناسب بين الطول والعرض */
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* 📱 شاشات الأجهزة اللوحية (Tablets) - تبدأ من عرض 768 بكسل */
+        @media (min-width: 768px) {
+            body {
+                background-color: #eef2f7;
+            }
+            .svg-card {
+                max-width: 200px; /* تكبير حجم الـ SVG قليلاً ليناسب التابلت */
+            }
+        }
+
+        /* 💻 شاشات الحواسيب (Desktops) - تبدأ من عرض 1024 بكسل */
+        @media (min-width: 1024px) {
+            .svg-container {
+                justify-content: flex-start; /* محاذاة العناصر لليمين/اليسار في الشاشات الكبيرة */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center; margin-bottom: 20px;">عرض متجاوب لعناصر SVG</h2>
+
+    <div class="svg-container">
+        <!-- عنصر SVG الأول -->
+        <svg class="svg-card" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="#4CAF50" />
+        </svg>
+
+        <!-- عنصر SVG الثاني -->
+        <svg class="svg-card" viewBox="0 0 100 100">
+            <rect width="80" height="80" x="10" y="10" fill="#2196F3" />
+        </svg>
+
+        <!-- عنصر SVG الثالث -->
+        <svg class="svg-card" viewBox="0 0 100 100">
+            <polygon points="50,15 90,85 10,85" fill="#FF9800" />
+        </svg>
+    </div>
+
+</body>
+</html>
